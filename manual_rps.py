@@ -1,7 +1,7 @@
 import random
 
 def get_computer_choice():
-    computer_choice = random.choice(["Rock", "Paper", "Scissors", "Nothing"])
+    computer_choice = random.choice(["Rock", "Paper", "Scissors"])
     print(f"The Computer's choice is: {computer_choice}")
     return computer_choice
 
