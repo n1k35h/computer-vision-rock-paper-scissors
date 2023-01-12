@@ -50,6 +50,7 @@ _def play():
 play()  # calls the play function and run the game
 
 Here is a part from the game:
+
 <img width="567" alt="2023-01-12" src="https://user-images.githubusercontent.com/119499198/212205014-526be933-7b8f-44d7-9c6c-39338772dda3.png">
 
 
