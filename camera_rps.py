@@ -84,7 +84,7 @@ def get_winner(computer_choice=str, user_choice=str):
 
     elif computer_choice == "Rock" and user_choice == "Scissors":
         # print("Computer choose Rock")
-        print("You lost!")
+        print("You lost")
 
     elif computer_choice == "Rock" and user_choice == "Paper":
         # print("Computer choose Rock")
@@ -100,7 +100,7 @@ def get_winner(computer_choice=str, user_choice=str):
 
     elif computer_choice == "Paper" and user_choice == "Rock":
         # print("Computer choose Paper")
-        print("You lost!")
+        print("You lost")
 
     elif computer_choice == "Scissors" and user_choice == "Scissors":
         # print("Computer chooses Scissors")
@@ -112,7 +112,7 @@ def get_winner(computer_choice=str, user_choice=str):
 
     elif computer_choice == "Scissors" and user_choice == "Paper":
         # print("Computer choose Scissors")
-        print("You lost!")
+        print("You lost")
     else:
         ("\nPlease enter a valid choice!")
 
