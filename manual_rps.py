@@ -13,41 +13,41 @@ def get_user_choice():
 def get_winner(computer_choice=str, user_choice=str):
     if computer_choice == "Rock" and user_choice == "Rock":
         # print("Computer chooses Rock")
-        print("\nIt is a tie!")
+        print("It is a tie!")
 
     elif computer_choice == "Rock" and user_choice == "Scissors":
         # print("Computer choose Rock")
-        print("\nYou lost")
+        print("You lost")
 
     elif computer_choice == "Rock" and user_choice == "Paper":
         # print("Computer choose Rock")
-        print("\nYou won!")
+        print("You won!")
     
     elif computer_choice == "Paper" and user_choice == "Paper":
         # print("Computer chooses Paper")
-        print("\nIt is a tie!")
+        print("It is a tie!")
 
     elif computer_choice == "Paper" and user_choice == "Scissors":
         # print("Computer choose Paper")
-        print("\nYou won!")
+        print("You won!")
 
     elif computer_choice == "Paper" and user_choice == "Rock":
         # print("Computer choose Paper")
-        print("\nYou lost")
+        print("You lost")
 
     elif computer_choice == "Scissors" and user_choice == "Scissors":
         # print("Computer chooses Scissors")
-        print("\nIt is a tie!")
+        print("It is a tie!")
 
     elif computer_choice == "Scissors" and user_choice == "Rock":
         # print("Computer choose Scissors")
-        print("\nYou won!")
+        print("You won!")
 
     elif computer_choice == "Scissors" and user_choice == "Paper":
         # print("Computer choose Scissors")
-        print("\nYou lost")
+        print("You lost")
     else:
-        ("\nPlease enter a valid choice!")
+        ("Please enter a valid choice!")
 
 def play():
     user_choice = get_user_choice()     # Calls the get_user_choice function
