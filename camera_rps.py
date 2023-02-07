@@ -96,15 +96,14 @@ def get_winner(computer_choice, user_choice):
         print("You won")
         result = "user"
 
-    else:
-        computer_choice == "Scissors" and user_choice == "Paper"    # Scissors beats Paper
+    elif computer_choice == "Scissors" and user_choice == "Paper":    # Scissors beats Paper
         # print("Computer choose Scissors")
         print("You lost")
         result = "computer"
-    # else:
-    #     user_choice == "Nothing"
-    #     print("You didn't play this round as there was no valid chose!")
-    #     result  = "no winner"
+    else:
+        user_choice == "Nothing"
+        print("You didn't play this round as there was no valid chose!")
+        result  = "no winner"
 
     return result
 
