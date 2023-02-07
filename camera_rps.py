@@ -108,11 +108,11 @@ def get_winner(computer_choice, user_choice):
     return result
 
 def play():
-    number_of_games_played = 0
-    computer_win = 0
-    user_win = 0
+    round_played = 0
+    computer_wins = 0
+    user_wins = 0
     
-    while number_of_games_played <= 5: # number of games played 
+    while round_played <= 5: # number of games played 
         start_time = countdown()    # starting the countdown
         computer_choice = get_computer_choice()
         user_choice = get_user_choice()
@@ -128,24 +128,24 @@ def play():
 
         # gives a point to the winner otherwise if it's a tie no point 
         if result == "computer":
-            computer_win += 1
+            computer_wins += 1
         elif result == "user":
-            user_win += 1
+            user_wins += 1
         else: 
             result == "no winner"
-        number_of_games_played += 1
+        round_played += 1
 
         # displays the number of rounds played and scores for each players
         print("")
-        print(f"Round Played: {number_of_games_played}")
-        print(f"Computer wins: {computer_win}, User wins: {user_win}")
+        print(f"Round Played: {round_played}")
+        print(f"Computer wins: {computer_wins}, User wins: {user_wins}")
         print("")
 
         # if a player wins 3 games then it ends the game
-        if computer_win == 3:
+        if computer_wins == 3:
             print("Computer wins")
             break
-        elif user_win == 3:
+        elif user_wins == 3:
             print("User wins")
             break
     else:
