@@ -4,122 +4,152 @@ import numpy as np
 import random
 import time
 
-model = load_model('keras_model.h5')
-cap = cv2.VideoCapture(0)   #   opens the camera
-labels = open('labels.txt', 'r').readlines()
-data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+# countdown function to start the game
+def countdown():
+        timer = 5   # 5 seconds
+        print("Show your hand in...") # mesaage show before the countdown starts
+        while int(timer) > 0:
+            cv2.waitKey(1000)       #cv2 module required
+            print("{}".format(timer))
+            time.time()
+            timer -= 1
 
 def get_prediction():
-    """Ask the user to choose between "Rock", "Paper", "Scissors" as 
-    an input, and returns the user's choice
-    
-    Arguments: None"""
+    model = load_model('keras_model.h5')
+    cap = cv2.VideoCapture(0)   # Open the camera
+    rps_list = ['Rock', 'Paper', 'Scissors', 'Nothing'] # list of items for the game
+    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
-    timer = 5
-
-    while True:
-        # Read and Display each frame
-        ret, frame = cap.read() 
-        resized_img = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
-        image_np = np.array(resized_img)
+    # begin of the video prediction while loop
+    while True: 
+        ret, frame = cap.read()
+        resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
+        image_np = np.array(resized_frame)
         normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
         data[0] = normalized_image
-        prediction = model.predict(data)
+        cv2.imshow('RPS', frame)    # displays the video frame for the user to view what hand gesture the camera has captured
+        prediction = model.predict(data) # model to predict what the current image it is 
+        user_choice = rps_list[np.argmax(prediction[0])]  # displays the predicted text of the user's choice
+        cv2.waitKey(5000)   # camera show for 5 seconds
+        print(user_choice)
+        break   # breaks the while loop
 
-        cv2.imshow('RPS', frame)
-        print(prediction)
-
-        # Check for key pressed        
-        key = cv2.waitKey(125)
-
-        # setting the key to start the countdown
-        # if key 's' is pressed it starts the countdown
-        if key == ord('s'):
-            start_time = time.time()
-            
-            while timer >= 0:
-                ret, frame = cap.read()
-
-                # this displays the countdown number and specify the font style 
-                font = cv2.FONT_HERSHEY_SIMPLEX
-                cv2.putText(frame, str(timer), (200, 250), font, 7,(0, 255, 255), 5)
-                cv2.imshow('RPS', frame)
-                cv2.waitKey(125)
-
-                # current time
-                current_time = time.time()
-
-                # if time goes pass one second then reduce the count
-                if current_time-start_time >= 1:
-                    start_time = current_time
-                    timer = timer-1
-
-            else:
-                ret, frame = cap.read()
-
-                cv2.waitKey(2000)
-
-                # cv2.imwrite('camera.jpg', frame)
-
-               
-        # press 'q' to quit the game or closed the video 
-        elif cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    
-    # close the camera
+        # Press q to close the window
+        # if cv2.waitKey(1) & 0xFF == ord('q'):
+        #     break
+        
+    # After the loop release the cap object
     cap.release()
-
-    # close the opened windows
+    # Destroy all the windows
     cv2.destroyAllWindows()
 
+    return user_choice
+
+def get_user_choice():
+    return get_prediction() # returns the get_prediction function
+
 def get_computer_choice():
-    computer_choice = random.choice(labels)
-    print(f"The Computer's choice is: {computer_choice}")
-    return computer_choice
+    computer_choice = random.choice(["Rock", "Paper", "Scissors"])  # a list where a computer will choice at random option
+    # print(f"The Computer's choice is: {computer_choice}")
+    return computer_choice  # returns a random chose for the computer
 
-def get_winner(computer_choice=str, user_choice=str):
-    if computer_choice == "Rock" and user_choice == "Rock":
+# method of winning a game
+def get_winner(computer_choice, user_choice):
+    # print(f"User choice is: {user_choice}")
+    if computer_choice == "Rock" and user_choice == "Rock": # both selected the sasme option
         # print("Computer chooses Rock")
-        print("It is a tie!")
+        print("It is a tie")
+        result = "no winner"
 
-    elif computer_choice == "Rock" and user_choice == "Scissors":
+    elif computer_choice == "Rock" and user_choice == "Scissors":   # Rock beats Scissors
         # print("Computer choose Rock")
         print("You lost")
+        result = "computer"
 
-    elif computer_choice == "Rock" and user_choice == "Paper":
+    elif computer_choice == "Rock" and user_choice == "Paper": # Paper beats Rock
         # print("Computer choose Rock")
-        print("You won!")
+        print("You won")
+        result = "user"
     
-    elif computer_choice == "Paper" and user_choice == "Paper":
+    elif computer_choice == "Paper" and user_choice == "Paper": # Both selected the same option
         # print("Computer chooses Paper")
-        print("It is a tie!")
+        print("It is a tie")
+        result = "no winner"
 
-    elif computer_choice == "Paper" and user_choice == "Scissors":
+    elif computer_choice == "Paper" and user_choice == "Scissors":  # Scissors beats Paper
         # print("Computer choose Paper")
-        print("You won!")
+        print("You won")
+        result = "user"
 
-    elif computer_choice == "Paper" and user_choice == "Rock":
+    elif computer_choice == "Paper" and user_choice == "Rock":  # Paper beats Rock
         # print("Computer choose Paper")
         print("You lost")
+        result = "computer"
 
-    elif computer_choice == "Scissors" and user_choice == "Scissors":
+    elif computer_choice == "Scissors" and user_choice == "Scissors":   # Both selecte the same option
         # print("Computer chooses Scissors")
-        print("It is a tie!")
+        print("It is a tie")
+        result = "no winner"
 
-    elif computer_choice == "Scissors" and user_choice == "Rock":
+    elif computer_choice == "Scissors" and user_choice == "Rock":   # Rock beat Scissors
         # print("Computer choose Scissors")
-        print("You won!")
+        print("You won")
+        result = "user"
 
-    elif computer_choice == "Scissors" and user_choice == "Paper":
+    else:
+        computer_choice == "Scissors" and user_choice == "Paper"    # Scissors beats Paper
         # print("Computer choose Scissors")
         print("You lost")
-    else:
-        ("\nPlease enter a valid choice!")
+        result = "computer"
+    # else:
+    #     user_choice == "Nothing"
+    #     print("You didn't play this round as there was no valid chose!")
+    #     result  = "no winner"
+
+    return result
 
 def play():
-    user_choice = get_prediction()     # Calls the get_prediction function
-    computer_choice = get_computer_choice()     # calls the get_computer_choice function
+    number_of_games_played = 0
+    computer_win = 0
+    user_win = 0
+    
+    while number_of_games_played <= 5: # number of games played 
+        start_time = countdown()    # starting the countdown
+        computer_choice = get_computer_choice()
+        user_choice = get_user_choice()
 
-    return get_winner(computer_choice=computer_choice, user_choice=user_choice)     # calls the get_winner function
+        # display what each player has choosen 
+        print("")
+        print(f"Computer choice is: {computer_choice}")
+        print(f"User choice is: {user_choice}")
+        print("")
 
-play()  # calls the play function and run the game
+        # display the result of each game e.g: you won, you lost or no winner
+        result = get_winner(computer_choice, user_choice)
+
+        # gives a point to the winner otherwise if it's a tie no point 
+        if result == "computer":
+            computer_win += 1
+        elif result == "user":
+            user_win += 1
+        else: 
+            result == "no winner"
+        number_of_games_played += 1
+
+        # displays the number of rounds played and scores for each players
+        print("")
+        print(f"Round Played: {number_of_games_played}")
+        print(f"Computer wins: {computer_win}, User wins: {user_win}")
+        print("")
+
+        # if a player wins 3 games then it ends the game
+        if computer_win == 3:
+            print("Computer wins")
+            break
+        elif user_win == 3:
+            print("User wins")
+            break
+    else:
+        print("Game over!")
+
+play()
