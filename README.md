@@ -1,16 +1,16 @@
 # Computer Vision RPS
-Milestone 1
+# Milestone 1
 Setting up GitHub and created a GitHub repository to track the codeof the Computer Vision Rock Paper Scissors project.
 
-Milestone 2
+# Milestone 2
 Created an image project model with 4 different classes that would be a part of a game - Rock, Paper, Scissors and Nothing. The "Nothing" class will present the lack of movement. The web-based tool that was used to create and capture the hand movement is called Teachable-Machine.
 
 After creating the 4 different classes for the image project model, I download the model from the "Tensorflow" tab in the Teachable-Machine tool. The 2 files that are downloaded were keras_model.h5, which is a model structure and labels.txt, which is the parameters of a deep learning model.
 
-Milestone 3
+# Milestone 3
 Before entering any code for this project or using the model, a conda environment need to be created by entering conda create -n rps, which the rps is the environment that is created in conda for this project. conda activate rps to activate the environment and then install pip by entering conda install pip, which the pip will be used for installing various libraries. 3 Libraries that needs to be installed for this project opencv-python, tensorflow and ipykernel.
 
-Milestone 4
+# Milestone 4
 Created a file called manual_rps.py, which will be used to play the game manually without the use of the camera. The import random module is required for getting the Rock, Paper and Scissors option randomly. There are 2 functions that needs to be created for this game, which are get_computer_choice and get_user_choice. get_computer_choice function will have the random.choice as the computer input will be a randomly chosen from the list. Whereas the get_user_choice function will have user to input their choice manually. 
 
 So the code for the get_computer_choice is as follows:
@@ -40,7 +40,7 @@ Here is a part from the game:
 <img width="567" alt="2023-01-12" src="https://user-images.githubusercontent.com/119499198/212205014-526be933-7b8f-44d7-9c6c-39338772dda3.png">
 
 
-Milestone 5
+# Milestone 5
 camera_rps.py file is created to produce Rock, Paper, Scissors and Nothing game by using the Camera function. get_prediction() is created as a function to get the user choice as determined by Keras CV Model that would than passed to get_winner function, which would then decide who won that game.
 
 Countdown was added to allow user to be prepared before the camera captures the image of the user's hand.
