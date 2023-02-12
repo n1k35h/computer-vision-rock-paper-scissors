@@ -150,7 +150,7 @@ def play():
             break
     
     while True:
-        play_again = input("Play again - Yes(y) or No(n): ")
+        play_again = input("Play again: Yes(y) or No(n): ")
         if play_again.lower() == "y":
             play()
         else:
