@@ -148,7 +148,14 @@ def play():
         elif user_wins == 3:
             print("User wins")
             break
-    else:
-        print("Game over!")
+    
+    while True:
+        play_again = input("Play again - Yes(y) or No(n): ")
+        if play_again.lower() == "y":
+            play()
+        else:
+            play_again.lower() == "n"
+            print("Game Over!")
+            break
 
 play()
