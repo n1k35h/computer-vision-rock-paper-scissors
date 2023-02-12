@@ -47,4 +47,4 @@ Countdown was added to allow user to be prepared before the camera captures the 
 
 Best of 5 games and first player to reach 3 wins is added to the play() function.
 
-play_again is added in play() function as an extra feature of the game.
+play_again is added in play() function as an extra feature of the game
