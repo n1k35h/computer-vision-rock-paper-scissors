@@ -6,14 +6,13 @@ Setting up GitHub and created a GitHub repository to track the codeof the Comput
 Created an image project model with 4 different classes that would be a part of a game - Rock, Paper, Scissors and Nothing. The "Nothing" class will present the lack of movement. The web-based tool that was used to create and capture the hand movement is called Teachable-Machine.
 
 Rock:
-![rock](https://user-images.githubusercontent.com/119499198/218549588-0eb954c2-2d62-43d8-a458-625ebd9086e6.jpg)
+![rock](https://user-images.githubusercontent.com/119499198/218551051-c689017d-bf2c-4335-87b8-e7d5bc291c0d.jpg)
 
 Paper:
-![paper](https://user-images.githubusercontent.com/119499198/218549709-03b7643b-c0ca-482b-aae4-a0e1f8a06e42.jpg)
+![paper](https://user-images.githubusercontent.com/119499198/218551081-b026809e-3945-4589-873b-57fafd404994.jpg)
 
 Scissors:
-![scissors](https://user-images.githubusercontent.com/119499198/218549798-1cf7c092-4fa8-4b26-a1e8-1aeac2b75196.jpg)
-
+![scissors](https://user-images.githubusercontent.com/119499198/218551099-a4ecd81e-6f28-4941-97d5-e560157e70c8.jpg)
 
 After creating the 4 different classes for the image project model, I download the model from the "Tensorflow" tab in the Teachable-Machine tool. The 2 files that are downloaded were keras_model.h5, which is a model structure and labels.txt, which is the parameters of a deep learning model.
 
